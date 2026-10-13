@@ -6,7 +6,6 @@
     }
   },
   "ConnectionStrings": {
-    // 
     "DefaultDatabase": "Host=localhost;Username=postgres;Password=postgres;Port=5432;Database=database"
   }
 }
