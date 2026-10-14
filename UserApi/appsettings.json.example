@@ -1,10 +1,43 @@
 {
   "DetailedErrors": true,
-  "Logging": {
-    "LogLevel": {
-      "Default": "Information",
-    }
-  },
+  "NLog": {
+      "throwConfigExceptions": true,
+      "extensions": [
+        {
+          "assembly": "NLog.Targets.OpenTelemetryProtocol"
+        }
+      ],
+      "targets": {
+        "ConsoleLog": {
+          "type": "Console"
+        },
+        "FileLog": {
+          "type": "File",
+          "fileName": "${basedir}/../../../logs/log-${shortdate}.log",
+          "archiveAboveSize": "31457280",
+          "maxArchiveFiles": "7"
+        },
+        "OTLP": {
+          "type": "OtlpTarget",
+          "usehttp": "true",
+          "serviceName": "UserApiService",
+          "endpoint": "http://localhost:4318/v1/logs",
+          "includeFormattedMessage": "true"
+        }
+      },
+      "rules": [
+        {
+          "logger": "*",
+          "minLevel": "Info",
+          "writeTo": "ConsoleLog"
+        },
+        {
+          "logger": "*",
+          "minLevel": "Debug",
+          "writeTo": "FileLog,OTLP"
+        }
+      ]
+    },
   "ConnectionStrings": {
     "DefaultDatabase": "Host=localhost;Username=postgres;Password=postgres;Port=5432;Database=database"
   }
