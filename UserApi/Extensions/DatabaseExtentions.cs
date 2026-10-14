@@ -3,7 +3,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using UserApi.Data;
 
-namespace UserApi.Extentions;
+namespace UserApi.Extensions;
 
 public static class DatabaseExtensions
 {
