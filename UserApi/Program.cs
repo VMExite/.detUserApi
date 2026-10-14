@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Scalar.AspNetCore;
 using UserApi.Data;
-using UserApi.Extentions;
+using UserApi.Extensions;
 using UserApi.Repositories;
 using UserApi.Repositories.Impl;
 using UserApi.Services;
